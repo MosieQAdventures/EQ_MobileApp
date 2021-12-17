@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/EQHM_dark_grey"
+    android:layout_gravity="center">
+
+    <!-- TEXTS -->
+    <TextView
+        android:id="@+id/testLowCutFreqText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LCF Prog:"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:layout_gravity=""
+        android:layout_marginTop="60dp"
+        android:layout_marginStart="50dp"/>
+    <TextView
+        android:id="@+id/testLowCutSlopeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LCS Prog:"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:layout_gravity=""
+        android:layout_marginTop="60dp"
+        android:layout_marginStart="280dp"/>
+
+    <TextView
+        android:id="@+id/testPeak1FreqText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="P1F Prog:"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:layout_gravity=""
+        android:layout_marginTop="160dp"
+        android:layout_marginStart="50dp"/>
+    <TextView
+        android:id="@+id/testPeak1GainText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="P1G Prog:"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:layout_gravity=""
+        android:layout_marginTop="160dp"
+        android:layout_marginStart="280dp"/>
+    <TextView
+        android:id="@+id/testPeak1QText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="P1Q Prog:"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:layout_gravity=""
+        android:layout_marginTop="160dp"
+        android:layout_marginStart="165dp"/>
+
+    <TextView
+        android:id="@+id/testPeak2FreqText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="P2F Prog:"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:layout_gravity=""
+        android:layout_marginTop="260dp"
+        android:layout_marginStart="50dp"/>
+    <TextView
+        android:id="@+id/testPeak2GainText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="P2G Prog:"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:layout_gravity=""
+        android:layout_marginTop="260dp"
+        android:layout_marginStart="280dp"/>
+    <TextView
+        android:id="@+id/testPeak2QText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="P2Q Prog:"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:layout_gravity=""
+        android:layout_marginTop="260dp"
+        android:layout_marginStart="165dp"/>
+
+    <TextView
+        android:id="@+id/testPeak3FreqText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="P3F Prog:"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:layout_gravity=""
+        android:layout_marginTop="360dp"
+        android:layout_marginStart="50dp"/>
+    <TextView
+        android:id="@+id/testPeak3GainText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="P3G Prog:"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:layout_gravity=""
+        android:layout_marginTop="360dp"
+        android:layout_marginStart="280dp"/>
+    <TextView
+        android:id="@+id/testPeak3QText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="P3Q Prog:"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:layout_gravity=""
+        android:layout_marginTop="360dp"
+        android:layout_marginStart="165dp"/>
+
+    <TextView
+        android:id="@+id/testHighCutFreqText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="HCF Prog:"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:layout_gravity=""
+        android:layout_marginTop="460dp"
+        android:layout_marginStart="50dp"/>
+    <TextView
+        android:id="@+id/testHighCutSlopeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="HCS Prog:"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:layout_gravity=""
+        android:layout_marginTop="460dp"
+        android:layout_marginStart="280dp"/>
+
+
+
+
+
+
+    <!-- Values -->
+    <TextView
+        android:id="@+id/testLowCutFreqProg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="init x"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:layout_gravity=""
+        android:layout_marginTop="90dp"
+        android:layout_marginStart="50dp"/>
+    <TextView
+        android:id="@+id/testLowCutSlopeProg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="init x"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:layout_gravity=""
+        android:layout_marginTop="90dp"
+        android:layout_marginStart="280dp"/>
+
+    <TextView
+        android:id="@+id/testPeak1FreqProg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="init x"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:layout_gravity=""
+        android:layout_marginTop="190dp"
+        android:layout_marginStart="50dp"/>
+    <TextView
+        android:id="@+id/testPeak1GainProg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="init x"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:layout_gravity=""
+        android:layout_marginTop="190dp"
+        android:layout_marginStart="280dp"/>
+    <TextView
+        android:id="@+id/testPeak1QProg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="init x"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:layout_gravity=""
+        android:layout_marginTop="190dp"
+        android:layout_marginStart="165dp"/>
+
+    <TextView
+        android:id="@+id/testPeak2FreqProg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="init x"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:layout_gravity=""
+        android:layout_marginTop="290dp"
+        android:layout_marginStart="50dp"/>
+    <TextView
+        android:id="@+id/testPeak2GainProg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="init x"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:layout_gravity=""
+        android:layout_marginTop="290dp"
+        android:layout_marginStart="280dp"/>
+    <TextView
+        android:id="@+id/testPeak2QProg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="init x"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:layout_gravity=""
+        android:layout_marginTop="290dp"
+        android:layout_marginStart="165dp"/>
+
+    <TextView
+        android:id="@+id/testPeak3FreqProg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="init x"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:layout_gravity=""
+        android:layout_marginTop="390dp"
+        android:layout_marginStart="50dp"/>
+    <TextView
+        android:id="@+id/testPeak3GainProg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="init x"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:layout_gravity=""
+        android:layout_marginTop="390dp"
+        android:layout_marginStart="280dp"/>
+    <TextView
+        android:id="@+id/testPeak3QProg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="init x"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:layout_gravity=""
+        android:layout_marginTop="390dp"
+        android:layout_marginStart="165dp"/>
+
+    <TextView
+        android:id="@+id/testHighCutFreqProg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="init x"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:layout_gravity=""
+        android:layout_marginTop="490dp"
+        android:layout_marginStart="50dp"/>
+    <TextView
+        android:id="@+id/testHighCutSlopeProg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="init x"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:layout_gravity=""
+        android:layout_marginTop="490dp"
+        android:layout_marginStart="280dp"/>
+
+</FrameLayout>

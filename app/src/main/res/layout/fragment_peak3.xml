@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/EQHM_dark_grey"
+    tools:context=".Peak3">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <com.triggertrap.seekarc.SeekArc
+        android:id="@+id/peak3FrequencySeekArc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:layout_marginTop="120dp"
+        android:layout_marginBottom="320dp"
+        android:padding="30dp"
+        app:rotation="180"
+        app:startAngle="90"
+        app:sweepAngle="270"
+        app:touchInside="true"
+        app:arcColor="@color/EQHM_light_grey"
+        app:clockwise="true"
+        app:progressColor="@color/EQHM_light_red"
+        app:arcWidth="8dp"
+        app:progressWidth="10dp"
+        app:progress="998"
+        app:roundEdges="true"
+        app:max="1998"/>
+
+    <com.triggertrap.seekarc.SeekArc
+        android:id="@+id/peak3GainSeekArc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:layout_marginTop="390dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="200dp"
+        android:padding="30dp"
+        app:rotation="180"
+        app:startAngle="90"
+        app:sweepAngle="270"
+        app:touchInside="true"
+        app:arcColor="@color/EQHM_light_grey"
+        app:clockwise="true"
+        app:progressColor="@color/EQHM_light_red"
+        app:arcWidth="8dp"
+        app:progressWidth="10dp"
+        app:progress="245"
+        app:roundEdges="true"
+        app:max="489"/>
+
+    <com.triggertrap.seekarc.SeekArc
+        android:id="@+id/peak3QSeekArc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:layout_marginTop="390dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginStart="200dp"
+        android:padding="30dp"
+        app:rotation="180"
+        app:startAngle="90"
+        app:sweepAngle="270"
+        app:touchInside="true"
+        app:arcColor="@color/EQHM_light_grey"
+        app:clockwise="true"
+        app:progressColor="@color/EQHM_light_red"
+        app:arcWidth="8dp"
+        app:progressWidth="10dp"
+        app:progress="10"
+        app:roundEdges="true"
+        app:max="99"/>
+
+    <TextView
+        android:id="@+id/peak3Title"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textColor="@color/white"
+        android:textAlignment="center"
+        android:text="Peak no. 3"
+        android:textSize="30sp"/>
+
+    <TextView
+        android:id="@+id/peak3FrequencyTitle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textColor="@color/white"
+        android:textAlignment="center"
+        android:text="Frequency"
+        android:textSize="20sp"
+        android:layout_marginTop="60dp" />
+
+    <TextView
+        android:id="@+id/peak3FrequencyText"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textColor="@color/white"
+        android:textAlignment="center"
+        android:text="10000 Hz"
+        android:textSize="20sp"
+        android:layout_marginTop="90dp" />
+
+    <TextView
+        android:id="@+id/peak3GainTitle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textColor="@color/white"
+        android:textAlignment="center"
+        android:text="Gain"
+        android:textSize="20sp"
+        android:layout_marginTop="380dp"
+        android:layout_marginEnd="200dp"/>
+
+    <TextView
+        android:id="@+id/peak3GainText"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textColor="@color/white"
+        android:textAlignment="center"
+        android:text="0 dB"
+        android:textSize="20sp"
+        android:layout_marginTop="410dp"
+        android:layout_marginEnd="200dp"/>
+
+    <TextView
+        android:id="@+id/peak3QTitle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textColor="@color/white"
+        android:textAlignment="center"
+        android:text="Q"
+        android:textSize="20sp"
+        android:layout_marginTop="380dp"
+        android:layout_marginStart="200dp"/>
+
+    <TextView
+        android:id="@+id/peak3QText"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textColor="@color/white"
+        android:textAlignment="center"
+        android:text="1.0"
+        android:textSize="20sp"
+        android:layout_marginTop="410dp"
+        android:layout_marginStart="200dp"/>
+
+</FrameLayout>

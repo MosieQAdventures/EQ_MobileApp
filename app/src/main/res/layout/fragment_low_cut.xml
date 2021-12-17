@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/EQHM_dark_grey"
+    tools:context=".LowCut">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <com.triggertrap.seekarc.SeekArc
+        android:id="@+id/lowCutFrequencySeekArc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:layout_marginTop="120dp"
+        android:layout_marginBottom="320dp"
+        android:padding="30dp"
+        app:rotation="180"
+        app:startAngle="90"
+        app:sweepAngle="270"
+        app:touchInside="true"
+        app:arcColor="@color/EQHM_light_grey"
+        app:clockwise="true"
+        app:progressColor="@color/EQHM_light_red"
+        app:arcWidth="8dp"
+        app:progressWidth="10dp"
+        app:roundEdges="true"
+        app:max="1998" />
+
+    <com.triggertrap.seekarc.SeekArc
+        android:id="@+id/lowCutSlopeSeekArc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:layout_marginTop="440dp"
+        android:layout_marginBottom="60dp"
+        android:padding="30dp"
+        app:rotation="180"
+        app:startAngle="90"
+        app:sweepAngle="270"
+        app:touchInside="true"
+        app:arcColor="@color/EQHM_light_grey"
+        app:clockwise="true"
+        app:progressColor="@color/EQHM_light_red"
+        app:arcWidth="8dp"
+        app:progressWidth="10dp"
+        app:roundEdges="true"
+        app:max="3"/>
+
+    <TextView
+        android:id="@+id/lowCutTitle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textColor="@color/white"
+        android:textAlignment="center"
+        android:text="Low Cut"
+        android:textSize="30sp"/>
+
+    <TextView
+        android:id="@+id/lowCutFrequencyTitle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textColor="@color/white"
+        android:textAlignment="center"
+        android:text="Frequency"
+        android:textSize="20sp"
+        android:layout_marginTop="60dp" />
+
+    <TextView
+        android:id="@+id/lowCutFrequencyText"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textColor="@color/white"
+        android:textAlignment="center"
+        android:text="20 Hz"
+        android:textSize="20sp"
+        android:layout_marginTop="90dp" />
+
+    <TextView
+        android:id="@+id/lowCutSlopeTitle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textColor="@color/white"
+        android:textAlignment="center"
+        android:text="Slope"
+        android:textSize="20sp"
+        android:layout_marginTop="380dp" />
+
+    <TextView
+        android:id="@+id/lowCutSlopeText"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textColor="@color/white"
+        android:textAlignment="center"
+        android:text="12 dB/Oct"
+        android:textSize="20sp"
+        android:layout_marginTop="410dp" />
+
+</FrameLayout>
