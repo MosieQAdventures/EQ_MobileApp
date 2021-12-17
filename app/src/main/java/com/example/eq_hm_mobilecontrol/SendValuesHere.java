@@ -176,7 +176,6 @@ public class SendValuesHere extends Fragment {
         hcf_prog_TV.setText(String.valueOf(hcfp));
         hcs_prog_TV.setText(String.valueOf(hcsp));
 
-
         return view;
     }
 }
