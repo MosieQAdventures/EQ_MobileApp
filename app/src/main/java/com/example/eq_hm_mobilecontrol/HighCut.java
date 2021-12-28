@@ -10,9 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.google.android.material.slider.Slider;
-import com.google.android.material.slider.Slider.OnSliderTouchListener;
-import com.google.android.material.snackbar.Snackbar;
 import com.triggertrap.seekarc.SeekArc;
 
 import java.util.List;
@@ -83,27 +80,29 @@ public class HighCut extends Fragment {
         highCutF_SeekArc = (SeekArc) view.findViewById(R.id.highCutFrequencySeekArc);
 
         //Singleton values
-        freq_progress = Singleton.getInstance().getProgressDescriptionList().get(11).progress;
+        freq_progress = BackgroundAsSingleton.getInstance().getProgressDescriptionList().get(11).progress;
 
         highCutF_SeekArc.setProgress(freq_progress);
-        highCutF_TextView.setText(String.valueOf(20 + (freq_progress * 10)) + " Hz");
+        highCutF_TextView.setText(String.valueOf(20 + (freq_progress)) + " Hz");
 
         highCutF_SeekArc.setOnSeekArcChangeListener(new SeekArc.OnSeekArcChangeListener() {
             @Override
             public void onProgressChanged(SeekArc seekArc, int progress, boolean fromUser) {
                 freq_progress = progress;
 
-                progress = 20 + (progress * 10);
+                progress = 20 + (progress);
 
                 highCutF_TextView.setText(String.valueOf(progress) + " Hz");
 
-                Singleton.getInstance().setProgressDescriptionIndividualListValue("hcfp", 11, freq_progress);
+                BackgroundAsSingleton.getInstance().setProgressDescriptionIndividualListValue("hcfp", 11, freq_progress);
             }
 
             @Override
             public void onStartTrackingTouch(SeekArc seekArc) {}
             @Override
-            public void onStopTrackingTouch(SeekArc seekArc) {}
+            public void onStopTrackingTouch(SeekArc seekArc) {
+                BackgroundAsSingleton.getInstance().executeAsyncTask();
+            }
         });
 
         //---- high cut slope ----
@@ -112,7 +111,7 @@ public class HighCut extends Fragment {
         highCutS_SeekArc = (SeekArc) view.findViewById(R.id.highCutSlopeSeekArc);
 
         //Singleton values
-        slope_progress = Singleton.getInstance().getProgressDescriptionList().get(12).progress;
+        slope_progress = BackgroundAsSingleton.getInstance().getProgressDescriptionList().get(12).progress;
 
         highCutS_SeekArc.setProgress(slope_progress);
         highCutS_TextView.setText(String.valueOf(12 + (slope_progress * 12)) + " dB/Oct");
@@ -126,13 +125,15 @@ public class HighCut extends Fragment {
 
                 highCutS_TextView.setText(String.valueOf(progress) + " dB/Oct");
 
-                Singleton.getInstance().setProgressDescriptionIndividualListValue("hcsp", 12, slope_progress);
+                BackgroundAsSingleton.getInstance().setProgressDescriptionIndividualListValue("hcsp", 12, slope_progress);
             }
 
             @Override
             public void onStartTrackingTouch(SeekArc seekArc) {}
             @Override
-            public void onStopTrackingTouch(SeekArc seekArc) {}
+            public void onStopTrackingTouch(SeekArc seekArc) {
+                BackgroundAsSingleton.getInstance().executeAsyncTask();
+            }
         });
 
         return view;

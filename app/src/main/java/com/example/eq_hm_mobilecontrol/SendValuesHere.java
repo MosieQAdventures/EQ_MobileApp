@@ -1,7 +1,5 @@
 package com.example.eq_hm_mobilecontrol;
 
-import android.content.Context;
-import android.location.GnssAntennaInfo;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,8 +9,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
-import java.util.List;
 
 public class SendValuesHere extends Fragment {
 
@@ -78,19 +74,19 @@ public class SendValuesHere extends Fragment {
     public static SendValuesHere newInstance() {
         SendValuesHere fragment = new SendValuesHere();
         Bundle args = new Bundle();
-        args.putInt(Singleton.getInstance().getProgressDescriptionList().get(0).name, Singleton.getInstance().getProgressDescriptionList().get(0).progress);
-        args.putInt(ARG_PARAM1, Singleton.getInstance().getProgressDescriptionList().get(1).progress);
-        args.putInt(ARG_PARAM2, Singleton.getInstance().getProgressDescriptionList().get(2).progress);
-        args.putInt(ARG_PARAM3, Singleton.getInstance().getProgressDescriptionList().get(3).progress);
-        args.putInt(ARG_PARAM4, Singleton.getInstance().getProgressDescriptionList().get(4).progress);
-        args.putInt(ARG_PARAM5, Singleton.getInstance().getProgressDescriptionList().get(5).progress);
-        args.putInt(ARG_PARAM6, Singleton.getInstance().getProgressDescriptionList().get(6).progress);
-        args.putInt(ARG_PARAM7, Singleton.getInstance().getProgressDescriptionList().get(7).progress);
-        args.putInt(ARG_PARAM8, Singleton.getInstance().getProgressDescriptionList().get(8).progress);
-        args.putInt(ARG_PARAM9, Singleton.getInstance().getProgressDescriptionList().get(9).progress);
-        args.putInt(ARG_PARAM10, Singleton.getInstance().getProgressDescriptionList().get(10).progress);
-        args.putInt(ARG_PARAM11, Singleton.getInstance().getProgressDescriptionList().get(11).progress);
-        args.putInt(ARG_PARAM12, Singleton.getInstance().getProgressDescriptionList().get(12).progress);
+        args.putInt(BackgroundAsSingleton.getInstance().getProgressDescriptionList().get(0).name, BackgroundAsSingleton.getInstance().getProgressDescriptionList().get(0).progress);
+        args.putInt(ARG_PARAM1, BackgroundAsSingleton.getInstance().getProgressDescriptionList().get(1).progress);
+        args.putInt(ARG_PARAM2, BackgroundAsSingleton.getInstance().getProgressDescriptionList().get(2).progress);
+        args.putInt(ARG_PARAM3, BackgroundAsSingleton.getInstance().getProgressDescriptionList().get(3).progress);
+        args.putInt(ARG_PARAM4, BackgroundAsSingleton.getInstance().getProgressDescriptionList().get(4).progress);
+        args.putInt(ARG_PARAM5, BackgroundAsSingleton.getInstance().getProgressDescriptionList().get(5).progress);
+        args.putInt(ARG_PARAM6, BackgroundAsSingleton.getInstance().getProgressDescriptionList().get(6).progress);
+        args.putInt(ARG_PARAM7, BackgroundAsSingleton.getInstance().getProgressDescriptionList().get(7).progress);
+        args.putInt(ARG_PARAM8, BackgroundAsSingleton.getInstance().getProgressDescriptionList().get(8).progress);
+        args.putInt(ARG_PARAM9, BackgroundAsSingleton.getInstance().getProgressDescriptionList().get(9).progress);
+        args.putInt(ARG_PARAM10, BackgroundAsSingleton.getInstance().getProgressDescriptionList().get(10).progress);
+        args.putInt(ARG_PARAM11, BackgroundAsSingleton.getInstance().getProgressDescriptionList().get(11).progress);
+        args.putInt(ARG_PARAM12, BackgroundAsSingleton.getInstance().getProgressDescriptionList().get(12).progress);
         fragment.setArguments(args);
         return fragment;
     }
@@ -113,19 +109,19 @@ public class SendValuesHere extends Fragment {
             hcfp = getArguments().getInt(ARG_PARAM11);
             hcfp = getArguments().getInt(ARG_PARAM12);*/
 
-            lcfp = Singleton.getInstance().getProgressDescriptionList().get(0).progress;
-            lcsp = Singleton.getInstance().getProgressDescriptionList().get(1).progress;
-            p1fp = Singleton.getInstance().getProgressDescriptionList().get(2).progress;
-            p1gp = Singleton.getInstance().getProgressDescriptionList().get(3).progress;
-            p1qp = Singleton.getInstance().getProgressDescriptionList().get(4).progress;
-            p2fp = Singleton.getInstance().getProgressDescriptionList().get(5).progress;
-            p2gp = Singleton.getInstance().getProgressDescriptionList().get(6).progress;
-            p2qp = Singleton.getInstance().getProgressDescriptionList().get(7).progress;
-            p3fp = Singleton.getInstance().getProgressDescriptionList().get(8).progress;
-            p3gp = Singleton.getInstance().getProgressDescriptionList().get(9).progress;
-            p3qp = Singleton.getInstance().getProgressDescriptionList().get(10).progress;
-            hcfp = Singleton.getInstance().getProgressDescriptionList().get(11).progress;
-            hcsp = Singleton.getInstance().getProgressDescriptionList().get(12).progress;
+            lcfp = BackgroundAsSingleton.getInstance().getProgressDescriptionList().get(0).progress;
+            lcsp = BackgroundAsSingleton.getInstance().getProgressDescriptionList().get(1).progress;
+            p1fp = BackgroundAsSingleton.getInstance().getProgressDescriptionList().get(2).progress;
+            p1gp = BackgroundAsSingleton.getInstance().getProgressDescriptionList().get(3).progress;
+            p1qp = BackgroundAsSingleton.getInstance().getProgressDescriptionList().get(4).progress;
+            p2fp = BackgroundAsSingleton.getInstance().getProgressDescriptionList().get(5).progress;
+            p2gp = BackgroundAsSingleton.getInstance().getProgressDescriptionList().get(6).progress;
+            p2qp = BackgroundAsSingleton.getInstance().getProgressDescriptionList().get(7).progress;
+            p3fp = BackgroundAsSingleton.getInstance().getProgressDescriptionList().get(8).progress;
+            p3gp = BackgroundAsSingleton.getInstance().getProgressDescriptionList().get(9).progress;
+            p3qp = BackgroundAsSingleton.getInstance().getProgressDescriptionList().get(10).progress;
+            hcfp = BackgroundAsSingleton.getInstance().getProgressDescriptionList().get(11).progress;
+            hcsp = BackgroundAsSingleton.getInstance().getProgressDescriptionList().get(12).progress;
         }
     }
 

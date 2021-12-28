@@ -2,25 +2,15 @@ package com.example.eq_hm_mobilecontrol;
 
 import android.os.Bundle;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.slider.Slider;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
 
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.TextView;
-
-import com.example.eq_hm_mobilecontrol.ui.main.SectionsPagerAdapter;
 import com.example.eq_hm_mobilecontrol.databinding.ActivityMainBinding;
-import com.triggertrap.seekarc.SeekArc;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -62,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         List<ProgressDescription> progressDescriptions = new ArrayList<ProgressDescription>();
         progressDescriptions = CreateProgressList(progressDescriptions);
 
-        Singleton.getInstance().setProgressDescriptionList(progressDescriptions);
+        BackgroundAsSingleton.getInstance().setProgressDescriptionList(progressDescriptions);
 
         // ^^ singleton testing
 
@@ -71,57 +61,57 @@ public class MainActivity extends AppCompatActivity {
         //------------------ tutaj fragmenty ------------------
         //viewPagerAdapter.addFragment(LowCut.newInstance(progressDescriptions.get(0).progress,
         //                                                progressDescriptions.get(1).progress), "Low Cut");
-        viewPagerAdapter.addFragment(LowCut.newInstance(Singleton.getInstance().getProgressDescriptionList(),
-                Singleton.getInstance().getProgressDescriptionList().get(0).progress,
-                Singleton.getInstance().getProgressDescriptionList().get(1).progress), "Low Cut");
-        viewPagerAdapter.addFragment(Peak1.newInstance(Singleton.getInstance().getProgressDescriptionList(),
-                Singleton.getInstance().getProgressDescriptionList().get(2).progress,
-                Singleton.getInstance().getProgressDescriptionList().get(3).progress,
-                Singleton.getInstance().getProgressDescriptionList().get(4).progress), "Peak no.1");
-        viewPagerAdapter.addFragment(Peak2.newInstance(Singleton.getInstance().getProgressDescriptionList(),
-                Singleton.getInstance().getProgressDescriptionList().get(5).progress,
-                Singleton.getInstance().getProgressDescriptionList().get(6).progress,
-                Singleton.getInstance().getProgressDescriptionList().get(7).progress), "Peak no.2");
-        viewPagerAdapter.addFragment(Peak3.newInstance(Singleton.getInstance().getProgressDescriptionList(),
-                Singleton.getInstance().getProgressDescriptionList().get(8).progress,
-                Singleton.getInstance().getProgressDescriptionList().get(9).progress,
-                Singleton.getInstance().getProgressDescriptionList().get(10).progress), "Peak no.3");
-        viewPagerAdapter.addFragment(HighCut.newInstance(Singleton.getInstance().getProgressDescriptionList(),
-                Singleton.getInstance().getProgressDescriptionList().get(11).progress,
-                Singleton.getInstance().getProgressDescriptionList().get(12).progress), "HighCut");
-        viewPagerAdapter.addFragment(Accelerometer.newInstance(Singleton.getInstance().getProgressDescriptionList(),
-                Singleton.getInstance().getProgressDescriptionList().get(13).progress,
-                Singleton.getInstance().getProgressDescriptionList().get(14).progress), "ACC - Low Cut");
+        viewPagerAdapter.addFragment(LowCut.newInstance(BackgroundAsSingleton.getInstance().getProgressDescriptionList(),
+                BackgroundAsSingleton.getInstance().getProgressDescriptionList().get(0).progress,
+                BackgroundAsSingleton.getInstance().getProgressDescriptionList().get(1).progress), "Low Cut");
+        viewPagerAdapter.addFragment(Peak1.newInstance(BackgroundAsSingleton.getInstance().getProgressDescriptionList(),
+                BackgroundAsSingleton.getInstance().getProgressDescriptionList().get(2).progress,
+                BackgroundAsSingleton.getInstance().getProgressDescriptionList().get(3).progress,
+                BackgroundAsSingleton.getInstance().getProgressDescriptionList().get(4).progress), "Peak no.1");
+        viewPagerAdapter.addFragment(Peak2.newInstance(BackgroundAsSingleton.getInstance().getProgressDescriptionList(),
+                BackgroundAsSingleton.getInstance().getProgressDescriptionList().get(5).progress,
+                BackgroundAsSingleton.getInstance().getProgressDescriptionList().get(6).progress,
+                BackgroundAsSingleton.getInstance().getProgressDescriptionList().get(7).progress), "Peak no.2");
+        viewPagerAdapter.addFragment(Peak3.newInstance(BackgroundAsSingleton.getInstance().getProgressDescriptionList(),
+                BackgroundAsSingleton.getInstance().getProgressDescriptionList().get(8).progress,
+                BackgroundAsSingleton.getInstance().getProgressDescriptionList().get(9).progress,
+                BackgroundAsSingleton.getInstance().getProgressDescriptionList().get(10).progress), "Peak no.3");
+        viewPagerAdapter.addFragment(HighCut.newInstance(BackgroundAsSingleton.getInstance().getProgressDescriptionList(),
+                BackgroundAsSingleton.getInstance().getProgressDescriptionList().get(11).progress,
+                BackgroundAsSingleton.getInstance().getProgressDescriptionList().get(12).progress), "HighCut");
+        viewPagerAdapter.addFragment(Accelerometer.newInstance(BackgroundAsSingleton.getInstance().getProgressDescriptionList(),
+                BackgroundAsSingleton.getInstance().getProgressDescriptionList().get(13).progress,
+                BackgroundAsSingleton.getInstance().getProgressDescriptionList().get(14).progress), "ACC - Low Cut");
         //test fragment
         viewPagerAdapter.addFragment(SendValuesHere.newInstance(), "SVH");
 
         //----------------------------------------------------------
 
         viewPager.setAdapter(viewPagerAdapter);
-
         tabLayout.setupWithViewPager(viewPager);
 
         //test sending message to server:
 
-        //SendControls sendControls = new SendControls();
-        //sendControls.execute("TEST STRING IN EXECUTE");
+        SendControls sendControls = new SendControls();
+        String json_test = BackgroundAsSingleton.getInstance().createJsonFromData();
+        //sendControls.execute(json_test);
 
     }
 
     //default values
     public List<ProgressDescription> CreateProgressList(List<ProgressDescription> progressList) {
-        progressList.add(new ProgressDescription("lcfp", 0)); //0-1998        //index 0
+        progressList.add(new ProgressDescription("lcfp", 0)); //0-19980        //index 0
         progressList.add(new ProgressDescription("lcsp", 0)); //0-3           //index 1
-        progressList.add(new ProgressDescription("p1fp", 198)); //0-1998      //index 2
-        progressList.add(new ProgressDescription("p1gp", 244)); //0-489       //index 3
+        progressList.add(new ProgressDescription("p1fp", 1980)); //0-19980      //index 2
+        progressList.add(new ProgressDescription("p1gp", 240)); //0-489       //index 3
         progressList.add(new ProgressDescription("p1qp", 10)); //0-99         //index 4
-        progressList.add(new ProgressDescription("p2fp", 398)); //0-1998      //index 5
-        progressList.add(new ProgressDescription("p2gp", 244)); //0-489       //index 6
+        progressList.add(new ProgressDescription("p2fp", 3980)); //0-19980      //index 5
+        progressList.add(new ProgressDescription("p2gp", 240)); //0-489       //index 6
         progressList.add(new ProgressDescription("p2qp", 10)); //0-99         //index 7
-        progressList.add(new ProgressDescription("p3fp", 998)); //0-1998      //index 8
-        progressList.add(new ProgressDescription("p3gp", 244)); //0-489       //index 9
+        progressList.add(new ProgressDescription("p3fp", 9980)); //0-19980      //index 8
+        progressList.add(new ProgressDescription("p3gp", 240)); //0-489       //index 9
         progressList.add(new ProgressDescription("p3qp", 10)); //0-99         //index 10
-        progressList.add(new ProgressDescription("hcfp", 1998)); //0-1998     //index 11
+        progressList.add(new ProgressDescription("hcfp", 19980)); //0-19980     //index 11
         progressList.add(new ProgressDescription("hcsp", 0)); //0-3           //index 12
         progressList.add(new ProgressDescription("acc_lcfp", 500)); //0-1998  //index 13
         progressList.add(new ProgressDescription("acc_lcsp", 1)); //0-3       //index 14

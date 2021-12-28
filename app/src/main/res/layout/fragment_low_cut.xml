@@ -28,7 +28,7 @@
         app:arcWidth="8dp"
         app:progressWidth="10dp"
         app:roundEdges="true"
-        app:max="1998" />
+        app:max="19980" />
 
     <com.triggertrap.seekarc.SeekArc
         android:id="@+id/lowCutSlopeSeekArc"

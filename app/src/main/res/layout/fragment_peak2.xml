@@ -27,9 +27,9 @@
         app:progressColor="@color/EQHM_light_red"
         app:arcWidth="8dp"
         app:progressWidth="10dp"
-        app:progress="398"
+        app:progress="3980"
         app:roundEdges="true"
-        app:max="1998"/>
+        app:max="19980"/>
 
     <com.triggertrap.seekarc.SeekArc
         android:id="@+id/peak2GainSeekArc"
@@ -51,7 +51,7 @@
         app:progressWidth="10dp"
         app:progress="245"
         app:roundEdges="true"
-        app:max="489"/>
+        app:max="479"/>
 
     <com.triggertrap.seekarc.SeekArc
         android:id="@+id/peak2QSeekArc"
@@ -121,7 +121,7 @@
         android:layout_height="match_parent"
         android:textColor="@color/white"
         android:textAlignment="center"
-        android:text="0 dB"
+        android:text="0.0 dB"
         android:textSize="20sp"
         android:layout_marginTop="410dp"
         android:layout_marginEnd="200dp"/>

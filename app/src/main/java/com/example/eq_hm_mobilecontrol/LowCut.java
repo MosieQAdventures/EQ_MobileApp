@@ -1,7 +1,5 @@
 package com.example.eq_hm_mobilecontrol;
 
-import android.content.Context;
-import android.location.GnssAntennaInfo;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -86,32 +84,29 @@ public class LowCut extends Fragment {
         lowCutF_SeekArc = (SeekArc) view.findViewById(R.id.lowCutFrequencySeekArc);
 
         //Singleton values
-        freq_progress = Singleton.getInstance().getProgressDescriptionList().get(0).progress;
+        freq_progress = BackgroundAsSingleton.getInstance().getProgressDescriptionList().get(0).progress;
 
         lowCutF_SeekArc.setProgress(freq_progress);
-        lowCutF_TextView.setText(String.valueOf(20 + (freq_progress * 10)) + " Hz");
+        lowCutF_TextView.setText(String.valueOf(20 + (freq_progress)) + " Hz");
 
         lowCutF_SeekArc.setOnSeekArcChangeListener(new SeekArc.OnSeekArcChangeListener() {
             @Override
             public void onProgressChanged(SeekArc seekArc, int progress, boolean fromUser) {
                 freq_progress = progress;
 
-                progress = 20 + (progress * 10);
+                progress = 20 + (progress);
 
                 lowCutF_TextView.setText(String.valueOf(progress) + " Hz");
 
-                Singleton.getInstance().setProgressDescriptionIndividualListValue("lcfp", 0, freq_progress);
-
-                //-----------
-
-                //SendControls sendControls = new SendControls();
-                //sendControls.execute("LCF Progress: " + progress + " Hz");
+                BackgroundAsSingleton.getInstance().setProgressDescriptionIndividualListValue("lcfp", 0, freq_progress);
             }
 
             @Override
             public void onStartTrackingTouch(SeekArc seekArc) {}
             @Override
-            public void onStopTrackingTouch(SeekArc seekArc) {}
+            public void onStopTrackingTouch(SeekArc seekArc) {
+                BackgroundAsSingleton.getInstance().executeAsyncTask();
+            }
         });
 
         //---- low cut slope ----
@@ -120,7 +115,7 @@ public class LowCut extends Fragment {
         lowCutS_SeekArc = (SeekArc) view.findViewById(R.id.lowCutSlopeSeekArc);
 
         //Singleton values
-        slope_progress = Singleton.getInstance().getProgressDescriptionList().get(1).progress;
+        slope_progress = BackgroundAsSingleton.getInstance().getProgressDescriptionList().get(1).progress;
 
         lowCutS_SeekArc.setProgress(slope_progress);
         lowCutS_TextView.setText(String.valueOf(12 + (slope_progress * 12)) + " dB/Oct");
@@ -134,18 +129,15 @@ public class LowCut extends Fragment {
 
                 lowCutS_TextView.setText(String.valueOf(progress) + " dB/Oct");
 
-                Singleton.getInstance().setProgressDescriptionIndividualListValue("lcsp", 1, slope_progress);
-
-                //-----------
-
-                //SendControls sendControls = new SendControls();
-                //sendControls.execute("LCS Progress: " + progress + " dB/Oct");
+                BackgroundAsSingleton.getInstance().setProgressDescriptionIndividualListValue("lcsp", 1, slope_progress);
             }
 
             @Override
             public void onStartTrackingTouch(SeekArc seekArc) {}
             @Override
-            public void onStopTrackingTouch(SeekArc seekArc) {}
+            public void onStopTrackingTouch(SeekArc seekArc) {
+                BackgroundAsSingleton.getInstance().executeAsyncTask();
+            }
         });
 
         return view;

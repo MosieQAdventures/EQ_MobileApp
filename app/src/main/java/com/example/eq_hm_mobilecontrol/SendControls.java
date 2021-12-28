@@ -35,16 +35,20 @@ public class SendControls extends AsyncTask<String, Integer, String> {
     int server_port = 54000;
     String host_ip_address = "192.168.1.16";
 
+
+    //String host_ip_address = "";
+
     Socket s;
     DataOutputStream dos;
     PrintWriter pw;
 
-    // Runs in UI before background thread is called
-    /*@Override
-    protected void onPreExecute() {
-        super.onPreExecute();
-
-        // Do something like display a progress bar
+    /*public SendControls() {
+        try {
+            s = new Socket(host_ip_address, server_port);
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
     }*/
 
     // This is run in a background thread
@@ -58,26 +62,13 @@ public class SendControls extends AsyncTask<String, Integer, String> {
             pw = new PrintWriter(s.getOutputStream());
             pw.write(message);
             pw.flush();
-            pw.close();
-            s.close();
+            //pw.close();
+            //s.close();
         }
         catch (IOException e)
         {
             e.printStackTrace();
         }
-
-
-        // get the string from params, which is an array
-        /*String myString = params[0];
-
-        // Do something that takes a long time, for example:
-        for (int i = 0; i <= 100; i++) {
-
-            // Do things
-
-            // Call this to update your progress
-            publishProgress(i);
-        }*/
 
         return "this string is passed to onPostExecute";
     }
@@ -97,4 +88,12 @@ public class SendControls extends AsyncTask<String, Integer, String> {
 
         // Do things like hide the progress bar or change a TextView
     }*/
+
+    @Override
+    protected void finalize() throws Throwable {
+        super.finalize();
+        if (s != null) {
+            s.close();
+        }
+    }
 }

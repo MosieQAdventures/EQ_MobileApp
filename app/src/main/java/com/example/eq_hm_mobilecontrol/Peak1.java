@@ -88,27 +88,29 @@ public class Peak1 extends Fragment {
         peak1F_SeekArc = (SeekArc) view.findViewById(R.id.peak1FrequencySeekArc);
 
         //Singleton values
-        freq_progress = Singleton.getInstance().getProgressDescriptionList().get(2).progress;
+        freq_progress = BackgroundAsSingleton.getInstance().getProgressDescriptionList().get(2).progress;
 
         peak1F_SeekArc.setProgress(freq_progress);
-        peak1F_TextView.setText(String.valueOf(20 + (freq_progress * 10)) + " Hz");
+        peak1F_TextView.setText(String.valueOf(20 + (freq_progress)) + " Hz");
 
         peak1F_SeekArc.setOnSeekArcChangeListener(new SeekArc.OnSeekArcChangeListener() {
             @Override
             public void onProgressChanged(SeekArc seekArc, int progress, boolean fromUser) {
                 freq_progress = progress;
 
-                progress = 20 + (progress * 10);
+                progress = 20 + (progress);
 
                 peak1F_TextView.setText(String.valueOf(progress) + " Hz");
 
-                Singleton.getInstance().setProgressDescriptionIndividualListValue("p1fp", 2, freq_progress);
+                BackgroundAsSingleton.getInstance().setProgressDescriptionIndividualListValue("p1fp", 2, freq_progress);
             }
 
             @Override
             public void onStartTrackingTouch(SeekArc seekArc) {}
             @Override
-            public void onStopTrackingTouch(SeekArc seekArc) {}
+            public void onStopTrackingTouch(SeekArc seekArc) {
+                BackgroundAsSingleton.getInstance().executeAsyncTask();
+            }
         });
 
         //---- peak 1 gain ----
@@ -117,10 +119,10 @@ public class Peak1 extends Fragment {
         peak1G_SeekArc = (SeekArc) view.findViewById(R.id.peak1GainSeekArc);
 
         //Singleton values
-        gain_progress = Singleton.getInstance().getProgressDescriptionList().get(3).progress;
+        gain_progress = BackgroundAsSingleton.getInstance().getProgressDescriptionList().get(3).progress;
 
         peak1G_SeekArc.setProgress(gain_progress);
-        peak1G_TextView.setText(String.valueOf((-240 + (gain_progress))/10) + " dB");
+        peak1G_TextView.setText(String.valueOf((-240 + (gain_progress))/10.0) + " dB");
 
         peak1G_SeekArc.setOnSeekArcChangeListener(new SeekArc.OnSeekArcChangeListener() {
             @Override
@@ -129,15 +131,19 @@ public class Peak1 extends Fragment {
 
                 progress = -240 + (progress);
 
-                peak1G_TextView.setText(String.valueOf(progress/10) + " dB");
+                double dprogress = (progress)/10.0;
 
-                Singleton.getInstance().setProgressDescriptionIndividualListValue("p1gp", 3, gain_progress);
+                peak1G_TextView.setText(String.valueOf(dprogress) + " dB");
+
+                BackgroundAsSingleton.getInstance().setProgressDescriptionIndividualListValue("p1gp", 3, gain_progress);
             }
 
             @Override
             public void onStartTrackingTouch(SeekArc seekArc) {}
             @Override
-            public void onStopTrackingTouch(SeekArc seekArc) {}
+            public void onStopTrackingTouch(SeekArc seekArc) {
+                BackgroundAsSingleton.getInstance().executeAsyncTask();
+            }
         });
 
         //---- peak 1 quality ----
@@ -146,7 +152,7 @@ public class Peak1 extends Fragment {
         peak1Q_SeekArc = (SeekArc) view.findViewById(R.id.peak1QSeekArc);
 
         //Singleton values
-        quality_progress = Singleton.getInstance().getProgressDescriptionList().get(4).progress;
+        quality_progress = BackgroundAsSingleton.getInstance().getProgressDescriptionList().get(4).progress;
 
         peak1Q_SeekArc.setProgress(quality_progress);
         peak1Q_TextView.setText(String.valueOf((quality_progress)/10.0));
@@ -160,13 +166,15 @@ public class Peak1 extends Fragment {
 
                 peak1Q_TextView.setText(String.valueOf(dprogress));
 
-                Singleton.getInstance().setProgressDescriptionIndividualListValue("p1qp", 4, quality_progress);
+                BackgroundAsSingleton.getInstance().setProgressDescriptionIndividualListValue("p1qp", 4, quality_progress);
             }
 
             @Override
             public void onStartTrackingTouch(SeekArc seekArc) {}
             @Override
-            public void onStopTrackingTouch(SeekArc seekArc) {}
+            public void onStopTrackingTouch(SeekArc seekArc) {
+                BackgroundAsSingleton.getInstance().executeAsyncTask();
+            }
         });
 
         return view;
