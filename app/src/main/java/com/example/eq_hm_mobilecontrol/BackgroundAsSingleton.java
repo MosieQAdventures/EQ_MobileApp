@@ -110,7 +110,7 @@ public class BackgroundAsSingleton {
                 + "    " + json_p3f + "," + "\n"
                 + "    " + json_p3g + "," + "\n"
                 + "    " + json_p3q + "\n"
-                + "}";
+                + "}" + "\n";
 
         return json_full;
     }
