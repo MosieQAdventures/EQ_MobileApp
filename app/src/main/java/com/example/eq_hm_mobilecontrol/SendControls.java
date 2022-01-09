@@ -32,7 +32,7 @@ public class SendControls extends AsyncTask<String, Integer, String> {
     //    Result – the type returns from doInBackground()
     // Any of them can be String, Integer, Void, etc.
 
-    int server_port = 54000;
+    int server_port = BackgroundAsSingleton.getInstance().getServer_port();
     String host_ip_address = "192.168.1.16";
 
 

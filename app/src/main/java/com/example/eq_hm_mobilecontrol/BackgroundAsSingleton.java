@@ -1,13 +1,24 @@
 package com.example.eq_hm_mobilecontrol;
 
+import java.text.DecimalFormatSymbols;
+import java.text.NumberFormat;
 import java.util.List;
 import java.lang.Integer;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+import java.util.Locale;
 
 public class BackgroundAsSingleton {
 
     // holds created instance of the singleton class
     private static BackgroundAsSingleton Instance;
     public List<ProgressDescription> progressDescriptionList;
+    int server_port = 54000;
+
+    private static final DecimalFormatSymbols dfs = new DecimalFormatSymbols(Locale.US);
+
+    private static final DecimalFormat df = new DecimalFormat("0.00", dfs);
+
 
     // private constructor
     private BackgroundAsSingleton() {
@@ -36,6 +47,10 @@ public class BackgroundAsSingleton {
 
     public void setProgressDescriptionIndividualListValue(String pdField_name, int index, int value) {
         getProgressDescriptionList().set(index, new ProgressDescription(pdField_name, value));
+    }
+
+    public int getServer_port() {
+        return this.server_port;
     }
 
     //---------------------
@@ -85,15 +100,27 @@ public class BackgroundAsSingleton {
         String json_hcs = "\"HighCut Slope\"" + ": " + String.valueOf(hcs);
         String json_lcf = "\"LowCut Frequency\"" + ": " + String.valueOf(lcf);
         String json_lcs = "\"LowCut Slope\"" + ": " + String.valueOf(lcs);
+        //String json_p1f = "\"Peak1 Frequency\"" + ": " + String.valueOf(p1f);
+        //String json_p1g = "\"Peak1 Gain\"" + ": " + String.valueOf(p1g);
+        //String json_p1q = "\"Peak1 Q\"" + ": " + String.valueOf(p1q);
+        //String json_p2f = "\"Peak2 Frequency\"" + ": " + String.valueOf(p2f);
+        //String json_p2g = "\"Peak2 Gain\"" + ": " + String.valueOf(p2g);
+        //String json_p2q = "\"Peak2 Q\"" + ": " + String.valueOf(p2q);
+        //String json_p3f = "\"Peak3 Frequency\"" + ": " + String.valueOf(p3f);
+        //String json_p3g = "\"Peak3 Gain\"" + ": " + String.valueOf(p3g);
+        //String json_p3q = "\"Peak3 Q\"" + ": " + String.valueOf(p3q);
+
         String json_p1f = "\"Peak1 Frequency\"" + ": " + String.valueOf(p1f);
-        String json_p1g = "\"Peak1 Gain\"" + ": " + String.valueOf(p1g);
-        String json_p1q = "\"Peak1 Q\"" + ": " + String.valueOf(p1q);
+        String json_p1g = "\"Peak1 Gain\"" + ": " + df.format(p1g);
+        String json_p1q = "\"Peak1 Q\"" + ": " + df.format(p1q);
         String json_p2f = "\"Peak2 Frequency\"" + ": " + String.valueOf(p2f);
-        String json_p2g = "\"Peak2 Gain\"" + ": " + String.valueOf(p2g);
-        String json_p2q = "\"Peak2 Q\"" + ": " + String.valueOf(p2q);
+        String json_p2g = "\"Peak2 Gain\"" + ": " + df.format(p2g);
+        String json_p2q = "\"Peak2 Q\"" + ": " + df.format(p2q);
         String json_p3f = "\"Peak3 Frequency\"" + ": " + String.valueOf(p3f);
-        String json_p3g = "\"Peak3 Gain\"" + ": " + String.valueOf(p3g);
-        String json_p3q = "\"Peak3 Q\"" + ": " + String.valueOf(p3q);
+        String json_p3g = "\"Peak3 Gain\"" + ": " + df.format(p3g);
+        String json_p3q = "\"Peak3 Q\"" + ": " + df.format(p3q);
+
+
 
         //json
         String json_full = "{" + "\n"

@@ -283,4 +283,35 @@
         android:layout_marginTop="490dp"
         android:layout_marginStart="280dp"/>
 
+    <TextView
+        android:id="@+id/reset_values_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reset Values"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="550dp" />
+
+    <Button
+        android:id="@+id/reset_values_button"
+        android:layout_width="wrap_content"
+        android:layout_height="58dp"
+        android:text="RESET"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="580dp" />
+
+    <TextView
+        android:id="@+id/current_port"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/EQHM_dark_grey"
+        android:text="Port: 54000"
+        android:textColor="@color/white"
+        android:textSize="12dp"
+        android:layout_marginStart="330dp"
+        android:layout_marginTop="15dp"/>
+
 </FrameLayout>
