@@ -222,6 +222,8 @@ public class SendValuesHere extends Fragment {
                 hcf_prog_TV.setText(String.valueOf(hcfp));
                 hcs_prog_TV.setText(String.valueOf(hcsp));
 
+                //test
+                BackgroundAsSingleton.getInstance().f_acc_state(); //accelerometer false
                 //async wysylka na server
                 BackgroundAsSingleton.getInstance().executeAsyncTask();
             }

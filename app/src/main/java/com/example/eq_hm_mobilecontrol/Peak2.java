@@ -161,7 +161,7 @@ public class Peak2 extends Fragment {
             public void onProgressChanged(SeekArc seekArc, int progress, boolean fromUser) {
                 quality_progress = progress;
 
-                double dprogress = (progress)/10.0;
+                double dprogress = (1+progress)/10.0;
 
                 peak2Q_TextView.setText(String.valueOf(dprogress));
 

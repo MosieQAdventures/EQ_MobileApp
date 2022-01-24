@@ -14,11 +14,12 @@ public class BackgroundAsSingleton {
     private static BackgroundAsSingleton Instance;
     public List<ProgressDescription> progressDescriptionList;
     int server_port = 54000;
+    boolean acc_open = false;
 
     private static final DecimalFormatSymbols dfs = new DecimalFormatSymbols(Locale.US);
-
     private static final DecimalFormat df = new DecimalFormat("0.00", dfs);
 
+    String comparator = "";
 
     // private constructor
     private BackgroundAsSingleton() {
@@ -30,7 +31,7 @@ public class BackgroundAsSingleton {
         // checks if instance is created
         if (Instance == null)
         {
-            // if note create one
+            // if not - create one
             Instance = new BackgroundAsSingleton();
         }
         // return the created instance on every subsequent call
@@ -53,13 +54,23 @@ public class BackgroundAsSingleton {
         return this.server_port;
     }
 
+    public boolean get_acc_state() {
+        return this.acc_open;
+    }
+    public void t_acc_state() { this.acc_open = true; }
+    public void f_acc_state() { this.acc_open = false; }
+
     //---------------------
 
     public void executeAsyncTask()
     {
         SendControls sendControls = new SendControls();
         String json_test = createJsonFromData();
-        sendControls.execute(json_test);
+        if (json_test.equals(comparator)) {}
+        else {
+            sendControls.execute(json_test);
+        }
+        comparator = json_test;
     }
 
 

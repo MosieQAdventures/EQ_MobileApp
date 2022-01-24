@@ -62,7 +62,7 @@ public class SendControls extends AsyncTask<String, Integer, String> {
             pw = new PrintWriter(s.getOutputStream());
             pw.write(message);
             pw.flush();
-            //pw.close();
+            pw.close();
             //s.close();
         }
         catch (IOException e)

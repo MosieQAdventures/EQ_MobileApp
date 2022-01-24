@@ -78,18 +78,20 @@ public class MainActivity extends AppCompatActivity {
                 BackgroundAsSingleton.getInstance().getProgressDescriptionList().get(10).progress), "Peak no.3");
         viewPagerAdapter.addFragment(HighCut.newInstance(BackgroundAsSingleton.getInstance().getProgressDescriptionList(),
                 BackgroundAsSingleton.getInstance().getProgressDescriptionList().get(11).progress,
-                BackgroundAsSingleton.getInstance().getProgressDescriptionList().get(12).progress), "HighCut");
+                BackgroundAsSingleton.getInstance().getProgressDescriptionList().get(12).progress), "High Cut");
+        //other fragments
+        viewPagerAdapter.addFragment(SendValuesHere.newInstance(),                                  "RES VALS");
+
         viewPagerAdapter.addFragment(Accelerometer.newInstance(BackgroundAsSingleton.getInstance().getProgressDescriptionList(),
                 BackgroundAsSingleton.getInstance().getProgressDescriptionList().get(13).progress,
-                BackgroundAsSingleton.getInstance().getProgressDescriptionList().get(14).progress), "ACC - Low Cut");
-        //test fragment
-        viewPagerAdapter.addFragment(SendValuesHere.newInstance(), "SVH");
+                BackgroundAsSingleton.getInstance().getProgressDescriptionList().get(14).progress), "ACC SENS");
 
         //----------------------------------------------------------
 
         viewPager.setAdapter(viewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
 
+        viewPager.setOffscreenPageLimit(1);
         //test sending message to server:
 
         SendControls sendControls = new SendControls();

@@ -71,7 +71,7 @@
         app:progressColor="@color/EQHM_light_red"
         app:arcWidth="8dp"
         app:progressWidth="10dp"
-        app:progress="10"
+        app:progress="9"
         app:roundEdges="true"
         app:max="99"/>
 

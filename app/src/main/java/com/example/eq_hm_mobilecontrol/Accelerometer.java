@@ -18,7 +18,9 @@ import android.widget.TextView;
 import com.triggertrap.seekarc.SeekArc;
 
 import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -37,7 +39,9 @@ public class Accelerometer extends Fragment implements SensorEventListener {
     private String mParam2;
 
     //--------------------------
+    private static final DecimalFormatSymbols dfs = new DecimalFormatSymbols(Locale.US);
     private static final DecimalFormat df = new DecimalFormat("0.00");
+    //private static final DecimalFormat df = new DecimalFormat("0", dfs);
 
     private SensorManager sensorManager;
     Sensor accelerometer;
@@ -59,8 +63,46 @@ public class Accelerometer extends Fragment implements SensorEventListener {
     int freq_progress = 50;
     int slope_progress = 1;
 
+    int counter = 0;
+    boolean ifopen = false;
+
     public Accelerometer() {
         // Required empty public constructor
+    }
+
+    @Override
+    public void onStart() {
+        ifopen = false;
+        BackgroundAsSingleton.getInstance().t_acc_state();
+        super.onStart();
+    }
+
+    @Override
+    public void onResume() {
+        ifopen = true;
+        BackgroundAsSingleton.getInstance().t_acc_state();
+        super.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        ifopen = false;
+        BackgroundAsSingleton.getInstance().f_acc_state();
+        super.onPause();
+    }
+
+    @Override
+    public void onStop() {
+        ifopen = false;
+        BackgroundAsSingleton.getInstance().f_acc_state();
+        super.onStop();
+    }
+
+    @Override
+    public void onDestroy() {
+        ifopen = false;
+        BackgroundAsSingleton.getInstance().f_acc_state();
+        super.onDestroy();
     }
 
     // TODO: Rename and change types and number of parameters
@@ -84,7 +126,7 @@ public class Accelerometer extends Fragment implements SensorEventListener {
         sensorManager = (SensorManager) getActivity().getSystemService(Context.SENSOR_SERVICE);
 
         accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-        sensorManager.registerListener(Accelerometer.this, accelerometer, SensorManager.SENSOR_DELAY_FASTEST);
+        sensorManager.registerListener(Accelerometer.this, accelerometer, SensorManager.SENSOR_DELAY_NORMAL);
 
     }
 
@@ -95,11 +137,11 @@ public class Accelerometer extends Fragment implements SensorEventListener {
 
     @Override
     public void onSensorChanged(SensorEvent event) {
-        x_acc_val = event.values[0];
+        x_acc_val = event.values[0]; //zbieranie wartości
         y_acc_val = event.values[1];
         z_acc_val = event.values[2];
 
-        if (x_acc_val > 9f) x_acc_val = 10f;
+        if (x_acc_val > 9f) x_acc_val = 10f; //zaokraglenia
         if (x_acc_val < -9f) x_acc_val = -10f;
         if (y_acc_val > 9f) y_acc_val = 10f;
         if (y_acc_val < -9f) y_acc_val = -10f;
@@ -110,8 +152,23 @@ public class Accelerometer extends Fragment implements SensorEventListener {
         acc_z_text.setText("Z: " + df.format(z_acc_val));
 
         //---- acc param test ---
-        acclowCutF_SeekArc.setProgress(50 - (int)x_acc_val * 5);
-        acclowCutS_SeekArc.setProgress(1 - (int)(y_acc_val * 0.2));
+        int acc_f_prog = 1000 - (int)x_acc_val * 100;
+        int acc_s_prog = 2 - (int)(y_acc_val * 0.2);
+        if (acc_s_prog < 0) acc_s_prog = 0;
+        if (acc_s_prog > 3) acc_s_prog = 3;
+        if (acc_f_prog < 20) acc_f_prog = 0;
+        if (acc_f_prog > 20000) acc_f_prog = 19980;
+
+        acclowCutF_SeekArc.setProgress(acc_f_prog); //ustawianie kóleczka w aplikacji
+        acclowCutS_SeekArc.setProgress(acc_s_prog);
+
+        if (ifopen && BackgroundAsSingleton.getInstance().acc_open) {
+            BackgroundAsSingleton.getInstance().setProgressDescriptionIndividualListValue("lcfp", 0, acc_f_prog);
+            BackgroundAsSingleton.getInstance().setProgressDescriptionIndividualListValue("lcsp", 1, acc_s_prog);
+            BackgroundAsSingleton.getInstance().executeAsyncTask(); //wysylka na serwer
+        }
+        else { }
+
     }
 
     @Override
@@ -130,14 +187,14 @@ public class Accelerometer extends Fragment implements SensorEventListener {
         acclowCutF_SeekArc = (SeekArc) view.findViewById(R.id.acclowCutFrequencySeekArc);
 
         acclowCutF_SeekArc.setProgress(freq_progress);
-        acclowCutF_TextView.setText(String.valueOf(20 + (freq_progress * 10)) + " Hz");
+        acclowCutF_TextView.setText(String.valueOf(20 + (freq_progress)) + " Hz");
 
         acclowCutF_SeekArc.setOnSeekArcChangeListener(new SeekArc.OnSeekArcChangeListener() {
             @Override
             public void onProgressChanged(SeekArc seekArc, int progress, boolean fromUser) {
                 freq_progress = progress;
 
-                progress = 20 + (progress * 10);
+                progress = 20 + (progress);
 
                 acclowCutF_TextView.setText(String.valueOf(progress) + " Hz");
             }
@@ -173,5 +230,11 @@ public class Accelerometer extends Fragment implements SensorEventListener {
         });
 
         return view;
+    }
+
+    @Override
+    public void onDestroyView() {
+        ifopen = false;
+        super.onDestroyView();
     }
 }
